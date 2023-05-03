@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+/* body{
+  background: url("https://imagevars.gulfnews.com/2019/10/15/Tourist-spot-in-Pakistan_16dd01a7947_original-ratio.jpg")  ;
+  background-size: 100% 100%;
+
+} */
 .App-logo {
   height: 40vmin;
   pointer-events: none;

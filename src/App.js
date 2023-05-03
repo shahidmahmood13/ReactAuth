@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import LoginForm from './Component/LoginForm';
+
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import Home from './Component/Home';
+import About from './Component/About';
+
+import './App.css'
+
 
 function App() {
+  const [login, setLogin] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    
+    const user = localStorage.getItem('user');
+
+    if(user){
+      navigate('/home');
+    }
+    else{
+      navigate('/')
+    }
+  },[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <div className='container'>
+          <Routes >
+            <Route path='/' element={<LoginForm setLogin={setLogin} />} />
+            <Route path='/home' element={<Home />} />
+            <Route path='/about' element={<About />} />
+          </Routes>
+        </div>   
+      
     </div>
   );
 }
